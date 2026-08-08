@@ -175,3 +175,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     
+
+
+    // --- SCROLL TRIGGER FOR FALLING STAMPS (SAFE PLACEMENT) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const stampObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When the stamp scrolls into the viewport
+            if (entry.isIntersecting) {
+                // Add the animation class
+                entry.target.classList.add('is-stamped');
+                // Stop observing it so it doesn't replay endlessly
+                stampObserver.unobserve(entry.target); 
+            }
+        });
+    }, { 
+        threshold: 0.3 // Triggers when 30% of the stamp section is visible
+    });
+
+    // Attach the observer to all graphics safely after the page loads
+   // Attach the observer to all graphics safely after the page loads
+    const stamps = document.querySelectorAll('.stamp-container'); // <-- UPDATED HERE
+    if (stamps.length > 0) {
+        stamps.forEach(stamp => {
+            stampObserver.observe(stamp);
+        });
+    }
+});
