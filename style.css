@@ -1572,86 +1572,94 @@ footer {
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 /* --- ULTIMATE PREMIUM MOBILE HERO UPGRADE --- */
+/* =========================================================
+   ULTIMATE MOBILE HERO: GLASSMORPHISM & CYCLIC MOTION
+========================================================= */
 @media (max-width: 768px) {
   
-  .village-side-bg {
-    display: none !important;
-  }
-
-  /* 1. Shift the image to the left to show the farmer and give the text room */
+  /* 1. Show the pure background image at the top */
   .hero {
     position: relative !important;
     background-image: url('Image 2.png') !important; 
     background-size: cover !important;
-    /* Shifts the focal point to 25% from the left, pulling the farmer into view */
-    background-position: 25% center !important; 
+    background-position: 30% top !important; /* Keeps the farmer and cow perfectly in frame */
     background-repeat: no-repeat !important;
   }
 
-  /* 2. Create the "Spotlight" texture exactly like the desktop view */
-  .hero-mobile-overlay {
-    display: block !important;
+  /* Remove the old faded gradient so the photo pops with rich color */
+  .hero-mobile-overlay { display: none !important; }
+
+  /* 2. The Luxurious Frosted Glass Container */
+  .hero-glass-card {
+    position: relative;
+    background: rgba(250, 250, 245, 0.85); /* Ivory base */
+    backdrop-filter: blur(15px); /* Creates the frosted glass effect */
+    -webkit-backdrop-filter: blur(15px); /* Safari support */
+    border-top: 1px solid rgba(212, 175, 55, 0.5); /* Delicate gold rim */
+    border-radius: 28px;
+    padding: 35px 20px 25px 20px;
+    box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* 3. The Continuous Cyclic Rotating Element */
+  .cyclic-heritage-badge {
     position: absolute;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    /* This creates a bright ivory center that softly fades out to reveal the edges */
-    background: radial-gradient(
-      ellipse at center, 
-      rgba(250, 250, 245, 0.95) 25%,  /* Bright, solid center for perfect reading */
-      rgba(250, 250, 245, 0.75) 60%,  /* Soft fade */
-      rgba(250, 250, 245, 0.20) 100%  /* Transparent edges to reveal the rich image texture */
-    ) !important;
-    z-index: 1;
+    top: -40px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background: #1B3E2F; /* Dark brand green */
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
   }
   
-  /* 3. Fix the cramped text alignment and sizes */
-  .hero .container {
+  .cyclic-heritage-badge svg {
+    position: absolute;
+    /* Implements a continuous cyclic rotation rather than a standard static display */
+    animation: spinCyclic 12s linear infinite; 
+  }
+
+  .cyclic-heritage-badge .badge-center {
+    font-size: 1.5rem;
     position: relative;
     z-index: 2;
-    padding-top: 20px !important; 
   }
 
-  /* Targets the main 'Ghee You Can Trace' heading */
-  .hero h1, .hero h2 { 
-    font-size: 2.6rem !important; 
+  @keyframes spinCyclic {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes slideUpFade {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* 4. Fine-Tune Typography for the Glass Card */
+  .hero-glass-card .bengali-tagline {
+    margin-bottom: 5px !important;
+  }
+
+  .hero-glass-card h1 {
+    font-size: 2.4rem !important;
     line-height: 1.15 !important;
-    margin-bottom: 20px !important;
-    padding: 0 10px !important;
-    text-shadow: 0 0 15px rgba(250, 250, 245, 1) !important;
+    margin-bottom: 15px !important;
+    color: #1B3E2F !important;
+    text-shadow: none !important; /* Removed shadow since the glass provides contrast */
   }
 
-  /* Targets the paragraph text */
-  .hero .container p {
-    font-size: 1.05rem !important;
+  .hero-glass-card p {
+    font-size: 1rem !important;
     line-height: 1.5 !important;
-    margin-bottom: 35px !important;
-    padding: 0 15px !important;
-    max-width: 95% !important;
-  }
-
-  /* 4. Ensure buttons are spaced beautifully */
-  .hero-buttons {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 320px !important; 
-    margin: 0 auto !important; 
-    padding: 0 !important;
-    gap: 15px !important;
-  }
-  
-  .hero-buttons .btn-primary, 
-  .hero-buttons .btn-secondary {
-    width: 100% !important; 
-    max-width: 100% !important;
-    margin: 0 !important; 
-    box-sizing: border-box !important; 
-    display: flex !important; 
-    justify-content: center !important;
-    align-items: center !important;
+    margin-bottom: 25px !important;
+    color: #333 !important;
+    text-shadow: none !important;
   }
 }
 
