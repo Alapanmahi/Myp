@@ -1834,3 +1834,46 @@ footer a:hover, .footer-section a:hover {
 footer h3, footer h4, .footer-section h3, .footer-section h4 {
   color: #D4AF37 !important;
 }
+
+
+
+/* --- PREMIUM MOBILE HERO GRADIENT --- */
+@media (max-width: 768px) {
+  
+  .hero-mobile-overlay,
+  .hero::before {
+    content: '';
+    display: block !important;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    
+    /* THE MAGIC GRADIENT: 
+       Starts highly transparent (40%) at the top so the image pops, 
+       and fades to solid (100%) at the bottom to protect the text and buttons. */
+    background: linear-gradient(
+      to bottom, 
+      rgba(250, 250, 245, 0.40) 0%,   /* Top: Highly visible image */
+      rgba(250, 250, 245, 0.85) 55%,  /* Middle: Fading beautifully */
+      rgba(250, 250, 245, 1) 100%     /* Bottom: Solid ivory for perfect button visibility */
+    ) !important;
+    z-index: 1;
+  }
+
+  /* Force the background image to focus on the best part of the picture */
+  .hero {
+    background-position: center 20% !important; /* Adjusts the focal point slightly higher */
+  }
+
+  /* Add a powerful glow to the text so the dark green letters don't blend into the cows/farmer */
+  .hero h1, .hero h2, .hero .container p {
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+      0 0 15px rgba(250, 250, 245, 1), 
+      0 0 30px rgba(250, 250, 245, 1), 
+      0 0 45px rgba(250, 250, 245, 0.8) !important;
+  }
+}
