@@ -102,22 +102,46 @@
 
   
 
-    <!-- HERO SECTION -->
-    <section class="hero" style="background-image: url('Image 3.png'); background-size: cover; background-position: center; position: relative;">
-        <div class="hero-mobile-overlay"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <!-- NEW ATTRACTIVE BENGALI TAGLINE -->
-            <div class="bengali-tagline">প্রতিটি ফোঁটায় খাঁটি ঐতিহ্যের স্পর্শ</div>
+  <section class="hero">
+    <!-- The protective overlay (will be hidden on mobile now) -->
+    <div class="hero-mobile-overlay"></div>
+    
+    <div class="container" style="height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 30px;">
+        
+        <!-- THE NEW PREMIUM GLASS CARD -->
+        <div class="hero-glass-card">
             
-            <h1 class="font-serif">Ghee You Can Trace.<br>Taste You Can Trust.</h1>
-            <p class="hero-desc">Traditionally prepared ghee from Krishnanagar, carefully packed and batch-traceable from our family’s dairy heritage to your kitchen.</p>
-            <!-- UPDATED BUTTON CONTAINER -->
-            <div class="hero-buttons">
-                <a href="shop.html" class="btn-primary" style="text-decoration: none;">Shop Ghee</a>
-                <a href="traceability.html" class="btn-secondary" style="text-decoration: none;">Know Our Process</a>
+            <!-- Continuous Cyclic Rotating Seal -->
+            <div class="cyclic-heritage-badge">
+                <svg viewBox="0 0 100 100" width="80" height="80">
+                    <defs>
+                        <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                    </defs>
+                    <text font-size="11" font-weight="bold" fill="#D4AF37" letter-spacing="1.8">
+                        <textPath href="#circlePath">
+                            ✦ 100% PURE ✦ KRISHNANAGAR 
+                        </textPath>
+                    </text>
+                </svg>
+                <div class="badge-center">🌿</div>
             </div>
+
+            <!-- Your Existing Text -->
+            <h3 class="bengali-tagline">প্রতিটি ফোঁটায় খাঁটি ঐতিহ্যের স্পর্শ</h3>
+            
+            <h1>Ghee You Can Trace.<br>Taste You Can Trust.</h1>
+            
+            <p>Traditionally prepared ghee from Krishnanagar, carefully packed and batch-traceable from our family’s dairy heritage to your kitchen.</p>
+            
+            <!-- Your Existing Buttons -->
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn-primary">Shop Ghee</a>
+                <a href="traceability.html" class="btn-secondary">Know Our Process</a>
+            </div>
+            
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- TRUST BAR -->
     <section class="trust-bar">
