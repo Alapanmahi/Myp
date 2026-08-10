@@ -873,15 +873,7 @@ footer {
   -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%);
   mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%);
 }
-/* --- MOBILE BACKGROUND FIX --- */
-@media (max-width: 768px) {
-  .village-side-bg {
-    opacity: 0.25; /* Brings the image back into view */
-    /* Uses a top-to-bottom fade instead of left-to-right for mobile */
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.8) 100%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.8) 100%);
-  }
-}
+
 
 
 
@@ -1550,6 +1542,7 @@ footer {
 }
 
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
+/* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 @media (max-width: 768px) {
   
   /* 1. Hide the old buggy floating background entirely */
@@ -1557,8 +1550,16 @@ footer {
     display: none !important;
   }
 
-/* 2. Style the protective overlay (Reduced opacity so the image shows through) */
- /* 2. Style the protective overlay (Reduced opacity so the image shows through) */
+  /* 2. FORCE the image directly onto the Hero section */
+  .hero {
+    position: relative !important;
+    background-image: url('Image 2.png') !important; /* Your exact image file */
+    background-size: cover !important;
+    background-position: center 20% !important; /* Focuses on the cows/farmer */
+    background-repeat: no-repeat !important;
+  }
+
+  /* 3. The 3-Step Premium Gradient */
   .hero-mobile-overlay {
     display: block !important;
     position: absolute;
@@ -1566,11 +1567,26 @@ footer {
     left: 0; 
     right: 0; 
     bottom: 0;
-    /* Changed from a solid 80% block to a soft gradient. 
-       It is more transparent at the top to show the farm, and thicker at the bottom to protect the buttons. */
-    background: linear-gradient(to bottom, rgba(250, 250, 245, 0.35) 0%, rgba(250, 250, 245, 0.85) 100%) !important;
+    /* Highly transparent at top, solid ivory at the bottom */
+    background: linear-gradient(
+      to bottom, 
+      rgba(250, 250, 245, 0.35) 0%, 
+      rgba(250, 250, 245, 0.85) 55%, 
+      rgba(250, 250, 245, 1) 100%
+    ) !important;
     z-index: 1;
   }
+  
+  /* 4. Text Glow for readability over the image */
+  .hero h1, .hero h2, .hero .container p {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 15px rgba(250, 250, 245, 1), 0 0 30px rgba(250, 250, 245, 1) !important;
+  }
+
+  /* KEEP YOUR EXISTING BUTTON CSS BELOW THIS LINE */
+  /* .hero-buttons { ... } */
+  /* .hero-buttons .btn-primary... { ... } */
 
   /* 3. Your Working Button Alignment (Unchanged) */
   .hero-buttons {
@@ -1837,43 +1853,3 @@ footer h3, footer h4, .footer-section h3, .footer-section h4 {
 
 
 
-/* --- PREMIUM MOBILE HERO GRADIENT --- */
-@media (max-width: 768px) {
-  
-  .hero-mobile-overlay,
-  .hero::before {
-    content: '';
-    display: block !important;
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0;
-    
-    /* THE MAGIC GRADIENT: 
-       Starts highly transparent (40%) at the top so the image pops, 
-       and fades to solid (100%) at the bottom to protect the text and buttons. */
-    background: linear-gradient(
-      to bottom, 
-      rgba(250, 250, 245, 0.40) 0%,   /* Top: Highly visible image */
-      rgba(250, 250, 245, 0.85) 55%,  /* Middle: Fading beautifully */
-      rgba(250, 250, 245, 1) 100%     /* Bottom: Solid ivory for perfect button visibility */
-    ) !important;
-    z-index: 1;
-  }
-
-  /* Force the background image to focus on the best part of the picture */
-  .hero {
-    background-position: center 20% !important; /* Adjusts the focal point slightly higher */
-  }
-
-  /* Add a powerful glow to the text so the dark green letters don't blend into the cows/farmer */
-  .hero h1, .hero h2, .hero .container p {
-    position: relative;
-    z-index: 2;
-    text-shadow: 
-      0 0 15px rgba(250, 250, 245, 1), 
-      0 0 30px rgba(250, 250, 245, 1), 
-      0 0 45px rgba(250, 250, 245, 0.8) !important;
-  }
-}
