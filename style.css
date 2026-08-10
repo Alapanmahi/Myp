@@ -1059,7 +1059,7 @@ footer {
 }
 
 .brand-logo-img {
-  height: 90px; /* Adjust this value up or down depending on how tall your logo is */
+  height: 50px; /* Adjust this value up or down depending on how tall your logo is */
   width: auto; /* Keeps the proportions perfect */
   object-fit: contain;
   transition: opacity 0.3s ease;
