@@ -1870,3 +1870,60 @@ footer h3, footer h4, .footer-section h3, .footer-section h4 {
 
 
 
+/* =========================================================
+   MOBILE HEADER CENTERPIECE (HERITAGE SEAL)
+========================================================= */
+
+/* 1. Hide completely on Desktop */
+.mobile-center-seal {
+  display: none; 
+}
+
+/* 2. Show and Center on Mobile */
+@media (max-width: 768px) {
+  
+  /* Ensure your main header is the anchor for the absolute positioning */
+  header, .main-header {
+    position: relative !important; 
+  }
+  
+  .mobile-center-seal {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Forces the seal into the exact center of the empty space */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none; /* Prevents it from blocking accidental clicks */
+  }
+  
+  /* Premium Typography */
+  .mobile-center-seal .seal-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #D4AF37; /* Premium Brand Gold */
+    margin-bottom: 2px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+  
+  /* The subtle, high-end animation */
+  .mobile-center-seal .seal-icon {
+    font-size: 1.1rem;
+    animation: premiumFloat 4s infinite ease-in-out;
+  }
+  
+  @keyframes premiumFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-3px) scale(1.05); }
+  }
+}
+
+
+
