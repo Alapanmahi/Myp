@@ -1543,23 +1543,24 @@ footer {
 
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
+/* --- ULTIMATE PREMIUM MOBILE HERO UPGRADE --- */
 @media (max-width: 768px) {
   
-  /* 1. Hide the old buggy floating background entirely */
   .village-side-bg {
     display: none !important;
   }
 
-  /* 2. FORCE the image directly onto the Hero section */
+  /* 1. Shift the image to the left to show the farmer and give the text room */
   .hero {
     position: relative !important;
-    background-image: url('Image 2.png') !important; /* Your exact image file */
+    background-image: url('Image 2.png') !important; 
     background-size: cover !important;
-    background-position: center 20% !important; /* Focuses on the cows/farmer */
+    /* Shifts the focal point to 25% from the left, pulling the farmer into view */
+    background-position: 25% center !important; 
     background-repeat: no-repeat !important;
   }
 
-  /* 3. The 3-Step Premium Gradient */
+  /* 2. Create the "Spotlight" texture exactly like the desktop view */
   .hero-mobile-overlay {
     display: block !important;
     position: absolute;
@@ -1567,35 +1568,49 @@ footer {
     left: 0; 
     right: 0; 
     bottom: 0;
-    /* Highly transparent at top, solid ivory at the bottom */
-    background: linear-gradient(
-      to bottom, 
-      rgba(250, 250, 245, 0.35) 0%, 
-      rgba(250, 250, 245, 0.85) 55%, 
-      rgba(250, 250, 245, 1) 100%
+    /* This creates a bright ivory center that softly fades out to reveal the edges */
+    background: radial-gradient(
+      ellipse at center, 
+      rgba(250, 250, 245, 0.95) 25%,  /* Bright, solid center for perfect reading */
+      rgba(250, 250, 245, 0.75) 60%,  /* Soft fade */
+      rgba(250, 250, 245, 0.20) 100%  /* Transparent edges to reveal the rich image texture */
     ) !important;
     z-index: 1;
   }
   
-  /* 4. Text Glow for readability over the image */
-  .hero h1, .hero h2, .hero .container p {
+  /* 3. Fix the cramped text alignment and sizes */
+  .hero .container {
     position: relative;
     z-index: 2;
-    text-shadow: 0 0 15px rgba(250, 250, 245, 1), 0 0 30px rgba(250, 250, 245, 1) !important;
+    padding-top: 20px !important; 
   }
 
-  /* KEEP YOUR EXISTING BUTTON CSS BELOW THIS LINE */
-  /* .hero-buttons { ... } */
-  /* .hero-buttons .btn-primary... { ... } */
+  /* Targets the main 'Ghee You Can Trace' heading */
+  .hero h1, .hero h2 { 
+    font-size: 2.6rem !important; 
+    line-height: 1.15 !important;
+    margin-bottom: 20px !important;
+    padding: 0 10px !important;
+    text-shadow: 0 0 15px rgba(250, 250, 245, 1) !important;
+  }
 
-  /* 3. Your Working Button Alignment (Unchanged) */
+  /* Targets the paragraph text */
+  .hero .container p {
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 35px !important;
+    padding: 0 15px !important;
+    max-width: 95% !important;
+  }
+
+  /* 4. Ensure buttons are spaced beautifully */
   .hero-buttons {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     width: 100% !important;
     max-width: 320px !important; 
-    margin: 30px auto 0 auto !important; 
+    margin: 0 auto !important; 
     padding: 0 !important;
     gap: 15px !important;
   }
@@ -1611,6 +1626,8 @@ footer {
     align-items: center !important;
   }
 }
+
+
 
 /* Hide the overlay on Desktop so the CSS Mask continues to work normally */
 @media (min-width: 769px) {
