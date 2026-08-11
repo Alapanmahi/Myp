@@ -1541,149 +1541,91 @@ footer {
   margin-top: 30px;
 }
 
-
-
-
-
-/* =========================================================
-   DESKTOP PROTECTION FOR MOBILE GLASS CARD
-========================================================= */
-/* =========================================================
-   DESKTOP PROTECTION (RESTORES ORIGINAL VIGNETTE)
-========================================================= */
-@media (min-width: 769px) {
-  
-  /* 1. Make sure the hero container doesn't block the background */
-  .hero {
-    background: transparent !important;
-  }
-
-  /* 2. Hide all mobile-specific overlays and badges */
-  .hero-mobile-overlay,
-  .cyclic-heritage-badge {
-    display: none !important;
-  }
-
-  /* 3. Strip the glass styling so the text sits naturally on the background */
-  .hero-glass-card {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    border-radius: 0 !important;
-    animation: none !important;
-  }
-}
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 /* --- STRICT MOBILE OVERRIDE (BACKGROUND & BUTTONS) --- */
 /* --- ULTIMATE PREMIUM MOBILE HERO UPGRADE --- */
-/* =========================================================
-   ULTIMATE MOBILE HERO: GLASSMORPHISM & CYCLIC MOTION
-========================================================= */
 @media (max-width: 768px) {
   
-  /* 1. Show the pure background image at the top */
+  .village-side-bg {
+    display: none !important;
+  }
+
+  /* 1. Shift the image to the left to show the farmer and give the text room */
   .hero {
     position: relative !important;
     background-image: url('Image 2.png') !important; 
     background-size: cover !important;
-    background-position: 30% top !important; /* Keeps the farmer and cow perfectly in frame */
+    /* Shifts the focal point to 25% from the left, pulling the farmer into view */
+    background-position: 25% center !important; 
     background-repeat: no-repeat !important;
   }
 
-  /* Remove the old faded gradient so the photo pops with rich color */
-  .hero-mobile-overlay { display: none !important; }
-
-  /* 2. The Luxurious Frosted Glass Container */
-  /* --- THE FLOATING GLASS CARD --- */
-  .hero-glass-card {
-    position: relative;
-    background: rgba(250, 250, 245, 0.85) !important; 
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-top: 1px solid rgba(212, 175, 55, 0.5) !important; 
-    border-radius: 24px !important;
-    
-    /* FIX: Makes it a floating card instead of hitting the screen edges */
-    width: 92% !important; 
-    box-sizing: border-box !important;
-    margin: 0 auto 25px auto !important; /* Centers it with bottom spacing */
-    padding: 35px 20px 25px 20px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-    animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  /* 3. The Continuous Cyclic Rotating Element */
-  /* --- THE ROTATING BADGE FIX --- */
-  .cyclic-heritage-badge {
+  /* 2. Create the "Spotlight" texture exactly like the desktop view */
+  .hero-mobile-overlay {
+    display: block !important;
     position: absolute;
-    top: -35px !important;
-    /* FIX: Pulls the badge safely inside the screen edge */
-    right: -5px !important; 
-    width: 75px !important; /* Slightly scaled down for elegance */
-    height: 75px !important;
-    background: #1B3E2F !important; 
-    border-radius: 50% !important;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2) !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 10 !important;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    /* This creates a bright ivory center that softly fades out to reveal the edges */
+    background: radial-gradient(
+      ellipse at center, 
+      rgba(250, 250, 245, 0.95) 25%,  /* Bright, solid center for perfect reading */
+      rgba(250, 250, 245, 0.75) 60%,  /* Soft fade */
+      rgba(250, 250, 245, 0.20) 100%  /* Transparent edges to reveal the rich image texture */
+    ) !important;
+    z-index: 1;
   }
-  .cyclic-heritage-badge svg {
-    position: absolute;
-    /* Implements a continuous cyclic rotation rather than a standard static display */
-    animation: spinCyclic 12s linear infinite; 
-  }
-
-  .cyclic-heritage-badge .badge-center {
-    font-size: 1.5rem;
+  
+  /* 3. Fix the cramped text alignment and sizes */
+  .hero .container {
     position: relative;
     z-index: 2;
+    padding-top: 20px !important; 
   }
 
-  @keyframes spinCyclic {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  /* Targets the main 'Ghee You Can Trace' heading */
+  .hero h1, .hero h2 { 
+    font-size: 2.6rem !important; 
+    line-height: 1.15 !important;
+    margin-bottom: 20px !important;
+    padding: 0 10px !important;
+    text-shadow: 0 0 15px rgba(250, 250, 245, 1) !important;
   }
 
-  @keyframes slideUpFade {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  /* 4. Fine-Tune Typography for the Glass Card */
-  .hero-glass-card .bengali-tagline {
-    margin-bottom: 5px !important;
-  }
-
-  .hero-glass-card h1 {
-    font-size: 2.1rem !important; /* Sized down slightly to prevent ugly word wrapping */
-    line-height: 1.2 !important;
-    margin-bottom: 15px !important;
-    padding: 0 5px !important;
-  }
-
-  .hero-glass-card .bengali-tagline {
-    font-size: 1.8rem !important; /* Scaled to fit perfectly above the English text */
-    margin-bottom: 8px !important;
-  }
-
-  .hero-glass-card p {
-    font-size: 1rem !important;
+  /* Targets the paragraph text */
+  .hero .container p {
+    font-size: 1.05rem !important;
     line-height: 1.5 !important;
-    margin-bottom: 25px !important;
-    color: #333 !important;
-    text-shadow: none !important;
+    margin-bottom: 35px !important;
+    padding: 0 15px !important;
+    max-width: 95% !important;
   }
-}
 
 
-
+/* --- PREMIUM MOBILE BUTTON STACKING --- */
+  .hero-buttons {
+    display: flex !important;
+    flex-direction: column !important; /* Forces them to stack top-to-bottom */
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 15px !important; /* Perfect spacing between the two buttons */
+    margin-top: 10px !important;
+  }
+  
+  .hero-buttons .btn-primary, 
+  .hero-buttons .btn-secondary {
+    width: 100% !important; /* Makes them stretch nicely across the card */
+    max-width: 100% !important;
+    box-sizing: border-box !important; 
+    margin: 0 !important; 
+    padding: 14px 20px !important; /* Gives them a nice, tall, tappable height */
+    text-align: center !important;
+    font-size: 1.05rem !important; /* Ensures the text fits on one line */
+    white-space: nowrap !important; /* Strictly prevents text from wrapping to a second line */
+  }
 /* Hide the overlay on Desktop so the CSS Mask continues to work normally */
 @media (min-width: 769px) {
   .hero-mobile-overlay {
@@ -1921,63 +1863,6 @@ footer a:hover, .footer-section a:hover {
 /* If you have footer headings, make sure they are visible too */
 footer h3, footer h4, .footer-section h3, .footer-section h4 {
   color: #D4AF37 !important;
-}
-
-
-
-/* =========================================================
-   MOBILE HEADER CENTERPIECE (HERITAGE SEAL)
-========================================================= */
-
-/* 1. Hide completely on Desktop */
-.mobile-center-seal {
-  display: none; 
-}
-
-/* 2. Show and Center on Mobile */
-@media (max-width: 768px) {
-  
-  /* Ensure your main header is the anchor for the absolute positioning */
-  header, .main-header {
-    position: relative !important; 
-  }
-  
-  .mobile-center-seal {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    /* Forces the seal into the exact center of the empty space */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    pointer-events: none; /* Prevents it from blocking accidental clicks */
-  }
-  
-  /* Premium Typography */
-  .mobile-center-seal .seal-text {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #D4AF37; /* Premium Brand Gold */
-    margin-bottom: 2px;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-  }
-  
-  /* The subtle, high-end animation */
-  .mobile-center-seal .seal-icon {
-    font-size: 1.1rem;
-    animation: premiumFloat 4s infinite ease-in-out;
-  }
-  
-  @keyframes premiumFloat {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-3px) scale(1.05); }
-  }
 }
 
 
